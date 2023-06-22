@@ -6,7 +6,6 @@ const StyleHeader = styled.div`
   margin-top: 2%;
   justify-content: center;
   align-items: center;
-  max-width: 1100px;
   width: 100%;
   max-height: 60px;
   font-size: 2rem;
@@ -26,10 +25,11 @@ const StyleHeader = styled.div`
   button{
     background-color: transparent;
     border: 1px solid var(--color-grey50);
-    font-size: 1rem;
-    min-width: 100px;
+    font-size: 0.8rem;
+    min-width: 80px;
     margin-left: 1%;
     border-radius: 8px;
+    padding: 3px;
     cursor: pointer;
   }
   button:hover{
@@ -38,4 +38,16 @@ const StyleHeader = styled.div`
   }
 
 `;
-export { StyleHeader };
+
+const ContainerHeardeSection = styled.div`
+   margin-bottom: 10%;
+    width: 100%;
+    max-width: 1100px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+
+`
+export { StyleHeader, ContainerHeardeSection };

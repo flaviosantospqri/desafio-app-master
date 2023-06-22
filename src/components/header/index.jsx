@@ -1,6 +1,8 @@
-import { StyleHeader } from "./style";
+import SearchFilter from "../searchFilter";
+import { ContainerHeardeSection, StyleHeader } from "./style";
 function Header() {
   return (
+    <ContainerHeardeSection>
     <StyleHeader>
         <h3 className="aplication-name">
           <span className="bar-log">\</span> Games Gallery
@@ -10,6 +12,8 @@ function Header() {
             <button className="btn-about">About-us</button>
         </div>
     </StyleHeader>
+    <SearchFilter/>
+    </ContainerHeardeSection>
   );
 }
 
