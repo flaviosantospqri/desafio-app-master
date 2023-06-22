@@ -1,6 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
 :root{
     --color-primary: #FFB800;
     --color-primary-variable-1:  #FFD600;
@@ -10,33 +12,17 @@ const GlobalStyle = createGlobalStyle`
     --color-grey100: #111111;
     --color-grey50: #878787;
     --color-grey20: #E0E0E0;
-    --color-grey0: #F5F5F5;
+    --color-grey0: #FAFAFA;
     --color-negative: #E60000;
     --color-warning: #FFCD07;
     --color-success: #168821;
     --color-information: #155BCB;
+    --color-font: #434D57
 }
 body{
-
-   background-color: var(--color-grey0);
-   color: var(--color-gray100);
-   font-family: "Inter" , sans-serif;
-}
-h1{
-    font-size: 26px;
-}
-h2{
-    font-size: 22px;
-}
-h3{
-    font-size: 18px;
-}
-p{
-    font-size: 16px;
-}
-.MuiFormControl-root{
-    margin-top: 0 !important; 
-    margin-bottom: 1rem !important;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--color-grey0);
+    margin: 0 auto;
 }
 `;
 export default GlobalStyle;
