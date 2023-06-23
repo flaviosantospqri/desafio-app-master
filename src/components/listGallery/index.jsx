@@ -1,9 +1,19 @@
-function ListGallery() {
+import Card from "../card";
+import { ContainerGallary } from "./style";
+
+function ListGallery({ games }) {
   return (
     <>
-      <div>
-        <h3>ListGallery</h3>
-      </div>
+      <ContainerGallary>
+        {games?.map((a) => (
+          <Card
+            key={a.id}
+            title={a.title}
+            photo={a.thumbnail}
+            genre={a.genre}
+          />
+        ))}
+      </ContainerGallary>
     </>
   );
 }

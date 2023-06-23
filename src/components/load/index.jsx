@@ -1,9 +1,14 @@
+import { ContainerLoad } from "./style";
+import load from "../../assets/load.svg";
+
 function Load() {
   return (
     <>
-      <div>
-        <h3>Load</h3>
-      </div>
+      <ContainerLoad>
+        <div>
+          <img src={load}></img>
+        </div>
+      </ContainerLoad>
     </>
   );
 }

@@ -1,46 +1,43 @@
-// import { useEffect, useState } from "react";
-// import { connect } from "./services/api";
+import { useEffect, useState } from "react";
+import { connect } from "./services/api";
 import Home from "./pages/Home";
-import ListGallery from "./components/listGallery";
 import Header from "./components/header";
 import { ContainerAplication } from "./style";
+import Load from "./components/load";
+import { SearchProvider } from "./contexts/searchContext";
+import PageError from "./components/pageError";
 
 function App() {
-  //   const [data, setDatas] = useState([]);
-  //   const [err, setErr] = useState([]);
+  const [data, setDatas] = useState([]);
+  const [err, setErr] = useState([]);
+  const [removeLoad, setRemoveLoader] = useState(false);
 
-  //   const getConnection = () => {
-  //     connect
-  //       .get()
-  //       .then((response) => {
-  //         setDatas(response.data);
-  //       })
-  //       .catch((err) => {
-  //         setErr(err);
-  //       });
-  //   };
+  const getConnection = async () => {
+    await connect
+      .get("/data")
+      .then((response) => {
+        setDatas(response.data);
+        setRemoveLoader(true);
+      })
+      .catch((err) => {
+        setErr(err);
+        setRemoveLoader(true);
+      });
+  };
 
-  //   useEffect(() => {
-  //     getConnection();
-  //   }, []);
+  useEffect(() => {
+    getConnection();
+  }, []);
 
-  //   const { code, message, status } = err;
-  //   if (code == "ECONNABORTED") {
-  //     alert("OPS O SERVIDOR ESTÁ DEMORANDO");
-  //   } else if (status > 500 && status < 509) {
-  //     alert("O servidor fahou em responder, tente recarregar a página");
-  //   } else if (message) {
-  //     alert("Erro inexperado, tente reiniciar a aplicação " + message);
-  //   }
-
-  //   console.log(data);
   return (
     <div className="App">
-    <ContainerAplication>
-      <Header />
-      <Home />
-      <ListGallery />
-    </ContainerAplication>
+      <ContainerAplication>
+        <SearchProvider>
+          <Header />
+          {data.length > 0 ? <Home data={data} /> : <PageError err={err} />}
+          {!removeLoad && <Load />}
+        </SearchProvider>
+      </ContainerAplication>
     </div>
   );
 }
