@@ -10,6 +10,7 @@ const ContainerSearch = styled.div`
   .search-compress {
     display: flex;
     height: 5%;
+    margin: 50px 0;
     align-items: flex-start;
     width: 100%;
     flex-direction: column;
@@ -17,28 +18,33 @@ const ContainerSearch = styled.div`
   .container-search-text {
     display: flex;
     flex-direction: column;
+    margin: 5% 0;
     width: 100%;
   }
   .container-search-filter {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 25%;
+    max-width: 150px;
     font-size: 0.8rem;
   }
   select {
-    margin-top: 5%;
+    width: 100%;
     border-radius: 4px;
     border-color: transparent;
-    height: 20px;
+    border: 1px solid var(--color-information);
+    height: 30px;
     color: var(--color-font);
   }
+  option {
+    color: var(--color-font);
+    font-weight: bold;
+  }
   input {
-    height: 35px;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    height: 30px;
     border-radius: 4px;
-    border-color: transparent;
+    border: 1px solid var(--color-information);
+    padding: 10px;
   }
 `;
 

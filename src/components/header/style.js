@@ -2,8 +2,7 @@ import { styled } from "styled-components";
 
 const StyleHeader = styled.div`
   display: flex;
-  margin: 3%;
-  margin-top: 2%;
+  margin: 0 5%;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -36,10 +35,13 @@ const StyleHeader = styled.div`
     font-weight: bold;
     transition-duration: 1s;
   }
+  @media screen and (max-width: 450px) {
+    flex-wrap: wrap-reverse;
+  }
 `;
 
 const ContainerHeardeSection = styled.div`
-  margin-bottom: 10%;
+  margin-bottom: 5%;
   width: 100%;
   max-width: 1100px;
   flex-direction: column;

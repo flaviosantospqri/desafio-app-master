@@ -6,8 +6,6 @@ function SearchFilter() {
   const { setValue, data, optionGenre, setOptionGenre } =
     useContext(SearchContext);
 
-  console.log(optionGenre);
-
   let filteredByGenre = data?.map((a) => a.genre);
   let diffGenre = new Set(filteredByGenre);
   diffGenre = Array.from(diffGenre).sort();
