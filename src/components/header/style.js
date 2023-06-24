@@ -13,16 +13,16 @@ const StyleHeader = styled.div`
   .bar-log {
     color: var(--color-information);
   }
-  .btn-sector{
+  .btn-sector {
     display: flex;
     justify-content: space-around;
     padding: 5px;
   }
-  .aplication-name{
+  .aplication-name {
     width: 90%;
     text-align: center;
   }
-  button{
+  button {
     background-color: transparent;
     border: 1px solid var(--color-grey50);
     font-size: 0.8rem;
@@ -32,22 +32,19 @@ const StyleHeader = styled.div`
     padding: 3px;
     cursor: pointer;
   }
-  button:hover{
+  button:hover {
     font-weight: bold;
     transition-duration: 1s;
   }
-
 `;
 
 const ContainerHeardeSection = styled.div`
-   margin-bottom: 10%;
-    width: 100%;
-    max-width: 1100px;
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-
-`
+  margin-bottom: 10%;
+  width: 100%;
+  max-width: 1100px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 export { StyleHeader, ContainerHeardeSection };
