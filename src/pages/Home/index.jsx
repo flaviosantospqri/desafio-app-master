@@ -3,15 +3,21 @@ import ListGallery from "../../components/listGallery";
 import { SearchContext } from "../../contexts/searchContext";
 
 function Home({ data }) {
-  const { value } = useContext(SearchContext);
+  const { value, optionGenre } = useContext(SearchContext);
 
   const filteredList = data.filter((a) =>
     a.title.toUpperCase().includes(value.toUpperCase())
   );
 
+  const filteredByGenre = data.filter(
+    (a) => optionGenre.toUpperCase() == a.genre.toUpperCase()
+  );
+
   return (
     <>
-      {filteredList.length > 0 ? (
+      {filteredByGenre.length > 0 ? (
+        <ListGallery games={filteredByGenre} />
+      ) : filteredList.length > 0 ? (
         <ListGallery games={filteredList} />
       ) : (
         <ListGallery games={data} />
