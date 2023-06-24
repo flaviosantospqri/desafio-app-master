@@ -5,7 +5,7 @@ function ErrorTimer() {
     <ContainerError>
       <div className="container-elements">
         <p>O servidor demorou para responder, tente mais tarde</p>
-        <img src="./src/assets/timerError.svg"></img>
+        <img src="./src/assets/error.gif"></img>
       </div>
     </ContainerError>
   );
