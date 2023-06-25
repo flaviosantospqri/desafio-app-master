@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import { SearchContext } from "../search/searchContext";
 import { connect } from "../../services/api";
 
 const RenderContext = createContext({});

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import SearchFilter from "../searchFilter";
 import { ContainerHeardeSection, StyleHeader } from "./style";
 function Header() {
   return (
