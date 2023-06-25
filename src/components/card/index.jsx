@@ -1,6 +1,6 @@
 import { ContainerGallery } from "./style";
 
-function ListGallery({ games }) {
+function Card({ games }) {
   return (
     <>
       <>
@@ -29,4 +29,4 @@ function ListGallery({ games }) {
   );
 }
 
-export default ListGallery;
+export default Card;

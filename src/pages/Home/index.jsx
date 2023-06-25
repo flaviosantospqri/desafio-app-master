@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import Card from "../../components/Card";
 import { RenderContext } from "../../contexts/render/renderContexts";
 import { SearchContext } from "../../contexts/search/searchContext";
 import { ContainerAplication } from "../../style";
 import Header from "../../components/header";
+import Card from "../../components/Card";
 import Load from "../../components/load";
 import SearchFilter from "../../components/searchFilter";
 
