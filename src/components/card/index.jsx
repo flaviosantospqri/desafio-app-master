@@ -1,21 +1,32 @@
-import { ContainerCard } from "./style";
+import { ContainerGallery } from "./style";
 
-function Card({ genre, title, photo }) {
+function ListGallery({ games }) {
   return (
     <>
-      <ContainerCard>
-        <div className="container-photo">
-          <img src={photo} alt="Image this game" />
-        </div>
-        <div>
-          <p>{title}</p>
-        </div>
-        <div>
-          <p>{genre}</p>
-        </div>
-      </ContainerCard>
+      <>
+        <ContainerGallery>
+          <ul className="container-list">
+            {games?.map((a) => (
+              <li className="card-container" key={a.id}>
+                <div className="container-photo">
+                  <img src={a.thumbnail}></img>
+                </div>
+                <p>
+                  Title Game: <strong> {a.title} </strong>
+                </p>
+                <p>
+                  Genre of this Game: <strong>{a.genre}</strong>
+                </p>
+                <p>
+                  Title Game: <strong> {a.title} </strong>
+                </p>
+              </li>
+            ))}
+          </ul>
+        </ContainerGallery>
+      </>
     </>
   );
 }
 
-export default Card;
+export default ListGallery;

@@ -2,8 +2,9 @@ import { styled } from "styled-components";
 
 const StyleHeader = styled.div`
   display: flex;
-  margin: 0 5%;
+  margin: 5% 5%;
   justify-content: center;
+  height: 10%;
   align-items: center;
   width: 100%;
   max-height: 60px;
@@ -14,9 +15,26 @@ const StyleHeader = styled.div`
   }
   .btn-sector {
     display: flex;
-    justify-content: space-around;
-    padding: 5px;
-    transition-property: 0.5s;
+    justify-content: space-evenly;
+    margin-right: 5%;
+    width: 20%;
+  }
+
+  .btn {
+    font-size: 1rem;
+    margin: 5px;
+    color: var(--color-font);
+    background-color: transparent;
+    border: 1px solid var(--color-grey20);
+    padding: 3px 5px;
+    font-weight: lighter;
+    border-radius: 8px;
+  }
+  .btn:link {
+    text-decoration: none;
+  }
+  .btn:hover {
+    font-weight: bold;
   }
   .aplication-name {
     width: 90%;
@@ -42,7 +60,7 @@ const StyleHeader = styled.div`
 `;
 
 const ContainerHeardeSection = styled.div`
-  margin-bottom: 5%;
+  margin-top: 10%;
   width: 100%;
   max-width: 1100px;
   flex-direction: column;

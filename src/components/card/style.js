@@ -1,22 +1,32 @@
 import { styled } from "styled-components";
 
-const ContainerCard = styled.div`
+const ContainerGallery = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 300px;
-  min-width: 250px;
-  max-width: 300px;
-  width: 100%;
-  border: 1px solid var(--color-grey20);
-  background-color: #ffffff;
-  box-sizing: border-box;
-  padding: 2%;
-  border-radius: 8px;
-  margin: 10px;
-  box-shadow: -4px 19px 23px -6px rgba(0, 0, 0, 0.75);
-  cursor: pointer;
-
+  max-width: 1100px;
+  height: 100vh;
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 250px;
+    max-width: 300px;
+    width: 100%;
+    min-height: 350px;
+    border: 1px solid var(--color-grey20);
+    background-color: #ffffff;
+    box-sizing: border-box;
+    padding: 2%;
+    border-radius: 8px;
+    margin: 10px;
+    box-shadow: -4px 19px 23px -6px rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+  }
+  .container-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
   .container-photo {
     max-width: 290px;
   }
@@ -25,5 +35,4 @@ const ContainerCard = styled.div`
     border-radius: 4px;
   }
 `;
-
-export { ContainerCard };
+export { ContainerGallery };

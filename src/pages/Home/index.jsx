@@ -1,29 +1,39 @@
 import { useContext } from "react";
-import ListGallery from "../../components/listGallery";
-import { SearchContext } from "../../contexts/searchContext";
+import Card from "../../components/Card";
+import { RenderContext } from "../../contexts/render/renderContexts";
+import { SearchContext } from "../../contexts/search/searchContext";
+import { ContainerAplication } from "../../style";
+import Header from "../../components/header";
+import Load from "../../components/load";
+import SearchFilter from "../../components/searchFilter";
 
-function Home({ data }) {
+function Home() {
+  const { data, removeLoad } = useContext(RenderContext);
   const { value, optionGenre } = useContext(SearchContext);
 
-  const filteredList = data.filter((a) =>
+  const filterBySelect = data.filter((a) =>
     a.title.toUpperCase().includes(value.toUpperCase())
   );
 
-  const filteredByGenre = data.filter(
+  const filterByOption = data.filter(
     (a) => optionGenre.toUpperCase() == a.genre.toUpperCase()
   );
 
   return (
     <>
-      {filteredByGenre.length > 0 ? (
-        <ListGallery games={filteredByGenre} />
-      ) : filteredList.length > 0 ? (
-        <ListGallery games={filteredList} />
-      ) : (
-        <ListGallery games={data} />
-      )}
+      <ContainerAplication>
+        <Header />
+        <SearchFilter />
+        {filterByOption?.length > 0 ? (
+          <Card games={filterByOption} />
+        ) : filterBySelect?.length > 0 ? (
+          <Card games={filterBySelect} />
+        ) : (
+          <Card games={data} />
+        )}
+        {!removeLoad && <Load />}
+      </ContainerAplication>
     </>
-    
   );
 }
 

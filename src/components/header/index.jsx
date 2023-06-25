@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SearchFilter from "../searchFilter";
 import { ContainerHeardeSection, StyleHeader } from "./style";
 function Header() {
@@ -8,11 +9,14 @@ function Header() {
           <span className="bar-log">\</span> Games Gallery
         </h3>
         <div className="btn-sector">
-          <button className="btn-home">Home</button>
-          <button className="btn-about">About-us</button>
+          <Link to={"/"} className=" btn btn-home">
+            Home
+          </Link>
+          <Link to={"/about"} className="btn btn-about">
+            About-us
+          </Link>
         </div>
       </StyleHeader>
-      <SearchFilter />
     </ContainerHeardeSection>
   );
 }

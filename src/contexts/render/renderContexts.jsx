@@ -1,11 +1,10 @@
 import { createContext, useEffect, useState } from "react";
-import { connect } from "../services/api";
+import { SearchContext } from "../search/searchContext";
+import { connect } from "../../services/api";
 
-const SearchContext = createContext({});
+const RenderContext = createContext({});
 
-const SearchProvider = ({ children }) => {
-  const [value, setValue] = useState("");
-  const [optionGenre, setOptionGenre] = useState("");
+const RenderProvider = ({ children }) => {
   const [data, setDatas] = useState([]);
   const [err, setErr] = useState([]);
   const [removeLoad, setRemoveLoader] = useState(false);
@@ -28,20 +27,15 @@ const SearchProvider = ({ children }) => {
   }, []);
 
   return (
-    <SearchContext.Provider
+    <RenderContext.Provider
       value={{
-        value,
-        setValue,
-        optionGenre,
-        setOptionGenre,
         data,
         err,
-        removeLoad
+        removeLoad,
       }}
     >
       {children}
-    </SearchContext.Provider>
+    </RenderContext.Provider>
   );
 };
-
-export { SearchProvider, SearchContext };
+export { RenderProvider, RenderContext };

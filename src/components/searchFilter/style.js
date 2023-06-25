@@ -2,17 +2,18 @@ import { styled } from "styled-components";
 
 const ContainerSearch = styled.div`
   display: flex;
-  width: 85%;
   justify-content: center;
   height: 10%;
+  max-width: 1000px;
+  width: 100%;
   align-items: center;
   color: var(--color-font);
   .search-compress {
     display: flex;
     height: 5%;
-    margin: 50px 0;
+    margin: 20px 0;
     align-items: flex-start;
-    width: 100%;
+    width: 95%;
     flex-direction: column;
   }
   .container-search-text {

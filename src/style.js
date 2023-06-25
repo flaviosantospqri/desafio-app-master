@@ -4,7 +4,7 @@ const ContainerAplication = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  justify-content: space-between;
 `;
 
 export { ContainerAplication };

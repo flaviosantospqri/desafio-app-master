@@ -3,14 +3,14 @@ import ReactDOM from "react-dom/client";
 import App from "./app.jsx";
 import GlobalStyleReset from "./styles/reset/globalStyleReset.js";
 import GlobalStyle from "./styles/globalStyle.js";
-import { SearchProvider } from "./contexts/searchContext.jsx";
+import Providers from "./contexts/index.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <SearchProvider>
+    <Providers>
       <GlobalStyleReset />
       <GlobalStyle />
       <App />
-    </SearchProvider>
+    </Providers>
   </React.StrictMode>
 );

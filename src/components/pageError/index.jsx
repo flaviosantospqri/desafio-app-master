@@ -1,9 +1,10 @@
 import Error from "../errors";
+import { ContainerError } from "./style";
 
 function PageError({ err }) {
   return (
     <>
-      <div>
+      <ContainerError>
         {err.response?.status >= 500 && err.response?.status <= 509 ? (
           <Error
             msg={"O servidor falhou em responder, tente recarregar a página"}
@@ -19,7 +20,7 @@ function PageError({ err }) {
             />
           )
         )}
-      </div>
+      </ContainerError>
     </>
   );
 }

@@ -1,10 +1,11 @@
 import { ContainerSearch } from "./style";
-import { SearchContext } from "../../contexts/searchContext";
+import { SearchContext } from "../../contexts/search/searchContext";
 import { useContext } from "react";
+import { RenderContext } from "../../contexts/render/renderContexts";
 
 function SearchFilter() {
-  const { setValue, data, optionGenre, setOptionGenre } =
-    useContext(SearchContext);
+  const { data } = useContext(RenderContext);
+  const { setValue, optionGenre, setOptionGenre } = useContext(SearchContext);
 
   let filteredByGenre = data?.map((a) => a.genre);
   let diffGenre = new Set(filteredByGenre);

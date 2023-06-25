@@ -21,6 +21,6 @@ body{
     font-family: 'Roboto', sans-serif;
     background: var(--color-grey0);
     margin: 0 auto;
-}
-`;
+    box-sizing: border-box;
+}`;
 export default GlobalStyle;
