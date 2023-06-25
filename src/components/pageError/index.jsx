@@ -1,17 +1,23 @@
-import ErrorServer from "../errors/errorServer";
-import ErrorTimer from "../errors/errorTimer";
-import OtherError from "../errors/otherError";
+import Error from "../errors";
 
 function PageError({ err }) {
   return (
     <>
       <div>
-        {err.response?.status >= 500 && err.response?.status < 509 ? (
-          <ErrorServer />
+        {err.response?.status >= 500 && err.response?.status <= 509 ? (
+          <Error
+            msg={"O servidor falhou em responder, tente recarregar a página"}
+          />
         ) : err.code == "ECONNABORTED" ? (
-          <ErrorTimer />
+          <Error msg={"O servidor demorou para responder, tente mais tarde"} />
         ) : (
-          err.code && <OtherError />
+          err.code && (
+            <Error
+              msg={
+                "O servidor não conseguirá responder por agora, tente voltar novamente mais tarde"
+              }
+            />
+          )
         )}
       </div>
     </>

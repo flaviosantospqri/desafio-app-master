@@ -1,7 +1,6 @@
 import { ContainerCard } from "./style";
 
-function Card(props) {
-  const { genre, title, photo } = props;
+function Card({ genre, title, photo }) {
   return (
     <>
       <ContainerCard>
@@ -14,7 +13,6 @@ function Card(props) {
         <div>
           <p>{genre}</p>
         </div>
-        <button className="btn-details">Detalhes</button>
       </ContainerCard>
     </>
   );

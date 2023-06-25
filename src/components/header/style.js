@@ -16,6 +16,7 @@ const StyleHeader = styled.div`
     display: flex;
     justify-content: space-around;
     padding: 5px;
+    transition-property: 0.5s;
   }
   .aplication-name {
     width: 90%;

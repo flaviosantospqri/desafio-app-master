@@ -14,6 +14,8 @@ const ContainerCard = styled.div`
   padding: 2%;
   border-radius: 8px;
   margin: 10px;
+  box-shadow: -4px 19px 23px -6px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
 
   .container-photo {
     max-width: 290px;

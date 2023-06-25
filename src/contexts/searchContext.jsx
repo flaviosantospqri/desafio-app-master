@@ -36,7 +36,7 @@ const SearchProvider = ({ children }) => {
         setOptionGenre,
         data,
         err,
-        removeLoad,
+        removeLoad
       }}
     >
       {children}

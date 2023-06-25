@@ -11,6 +11,7 @@ function ListGallery({ games }) {
             title={a.title}
             photo={a.thumbnail}
             genre={a.genre}
+            id={a.id}
           />
         ))}
       </ContainerGallary>

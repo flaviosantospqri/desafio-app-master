@@ -1,5 +1,5 @@
 import { ContainerLoad } from "./style";
-import load from "../../assets/load.svg";
+import load from "../../assets/img/load.svg";
 
 function Load() {
   return (

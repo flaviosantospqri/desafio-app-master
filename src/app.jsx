@@ -5,9 +5,9 @@ import Load from "./components/load";
 import PageError from "./components/pageError";
 import { useContext } from "react";
 import { SearchContext } from "./contexts/searchContext";
-
 function App() {
-  const { data, removeLoad, err } = useContext(SearchContext);
+  const { data, removeLoad, err} = useContext(SearchContext);
+
   return (
     <div className="App">
       <ContainerAplication>
