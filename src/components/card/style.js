@@ -3,7 +3,8 @@ import { styled } from "styled-components";
 const ContainerGallery = styled.div`
   display: flex;
   max-width: 1100px;
-  height: 100vh;
+  height: 50vh;
+  margin-top: 10%;
   .card-container {
     display: flex;
     flex-direction: column;
