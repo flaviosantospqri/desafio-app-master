@@ -11,6 +11,7 @@ const StyleHeader = styled.div`
   font-size: 2rem;
   color: var(--color-font);
   .bar-log {
+    margin-right: -15px;
     color: var(--color-information);
   }
   .btn-sector {

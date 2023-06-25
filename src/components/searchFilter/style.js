@@ -10,8 +10,7 @@ const ContainerSearch = styled.div`
   color: var(--color-font);
   .search-compress {
     display: flex;
-    height: 5%;
-    margin: 20px 0;
+    height: 20vh;
     align-items: flex-start;
     width: 95%;
     flex-direction: column;
@@ -26,10 +25,11 @@ const ContainerSearch = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 150px;
+    max-width: 500px;
     font-size: 0.8rem;
   }
   select {
+    max-width: 350px;
     width: 100%;
     border-radius: 4px;
     border-color: transparent;

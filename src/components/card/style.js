@@ -4,7 +4,7 @@ const ContainerGallery = styled.div`
   display: flex;
   max-width: 1100px;
   height: 50vh;
-  margin-top: 10%;
+  margin-top: 5%;
   .card-container {
     display: flex;
     flex-direction: column;
@@ -26,7 +26,7 @@ const ContainerGallery = styled.div`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
   }
   .container-photo {
     max-width: 290px;
