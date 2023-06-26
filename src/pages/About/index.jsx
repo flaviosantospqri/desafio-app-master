@@ -6,14 +6,21 @@ function About() {
     <>
       <ContainerAplication>
         <Header />
-        <div className="btn-sector"></div>
-        <div>
+        <div
+          style={{
+            maxWidth: "1000px",
+            margin: "5%",
+            height: "60vh",
+            display: "flex",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
           <p
             style={{
               textAlign: "justify",
-              maxWidth: "1000px",
-              margin: "5%",
-              lineHeight: "40px",
+              width: "100%",
               color: "var(--color-font)",
               fontSize: "1.3rem",
             }}
