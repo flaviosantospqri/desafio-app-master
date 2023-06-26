@@ -9,6 +9,7 @@ function RoutesApp() {
       <Routes>
         <Route path="/" exact Component={Home}></Route>
         <Route path="/about" Component={About}></Route>
+        <Route path="/*" Component={Home}></Route>
       </Routes>
     </BrowserRouter>
   );
