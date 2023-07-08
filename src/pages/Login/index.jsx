@@ -1,8 +1,10 @@
+import FormLogin from "../../components/formLogin";
+
 function Login() {
   return (
-    <section className="information_section">
-      <h1>LogIn</h1>
-    </section>
+    <>
+      <FormLogin />
+    </>
   );
 }
 export default Login;

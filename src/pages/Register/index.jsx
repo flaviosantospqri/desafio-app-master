@@ -1,8 +1,6 @@
+import FormRegister from "../../components/formRegister";
+
 function Register() {
-  return (
-    <section className="information_section">
-      <h1>Register</h1>
-    </section>
-  );
+  return <FormRegister />;
 }
 export default Register;
