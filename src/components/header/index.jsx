@@ -16,6 +16,12 @@ function Header() {
           <Link to={"/about"} className="btn btn-about">
             About-us
           </Link>
+          <Link to={"/login"} className="btn btn-about">
+            Login
+          </Link>
+          <Link to={"/register"} className="btn btn-about">
+            Register
+          </Link>
         </div>
       </StyleHeader>
     </ContainerHeardeSection>
