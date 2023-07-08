@@ -7,6 +7,8 @@ const RenderProvider = ({ children }) => {
   const [data, setDatas] = useState([]);
   const [err, setErr] = useState([]);
   const [removeLoad, setRemoveLoader] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [like, setLiked] = useState(false);
 
   const getConnection = async () => {
     await connect
@@ -31,6 +33,10 @@ const RenderProvider = ({ children }) => {
         data,
         err,
         removeLoad,
+        setRating,
+        rating,
+        like,
+        setLiked,
       }}
     >
       {children}
