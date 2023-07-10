@@ -1,18 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Container } from "../formLogin/style";
 import { useState } from "react";
-import { doc, serverTimestamp, setDoc } from "firebase/firestore";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { db } from "../../services/firebase";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
+import { db } from "../../services/firebase";
 
 function FormRegister() {
   const [dataUser, setDataUser] = useState({
-    name: "",
     email: "",
     password: "",
   });

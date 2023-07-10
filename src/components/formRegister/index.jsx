@@ -30,8 +30,6 @@ function FormRegister() {
 
   async function onSubmit(e) {
     e.preventDefault();
-    console.log(email);
-
     try {
       const auth = getAuth();
       const userCredential = await createUserWithEmailAndPassword(
