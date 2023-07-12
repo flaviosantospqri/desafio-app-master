@@ -8,14 +8,14 @@ import Load from "../../components/load";
 import SearchFilter from "../../components/searchFilter";
 
 function Home() {
-  const { data, removeLoad } = useContext(RenderContext);
+  const { removeLoad, fireStoreItens } = useContext(RenderContext);
   const { value, optionGenre } = useContext(SearchContext);
 
-  const filterBySelect = data.filter((a) =>
+  const filterBySelect = fireStoreItens.filter((a) =>
     a.title.toUpperCase().includes(value.toUpperCase())
   );
 
-  const filterByOption = data.filter(
+  const filterByOption = fireStoreItens.filter(
     (a) => optionGenre.toUpperCase() == a.genre.toUpperCase()
   );
 
@@ -29,7 +29,7 @@ function Home() {
         ) : filterBySelect?.length > 0 ? (
           <Card games={filterBySelect} />
         ) : (
-          <Card games={data} />
+          <Card games={fireStoreItens} />
         )}
         {!removeLoad && <Load />}
       </ContainerAplication>

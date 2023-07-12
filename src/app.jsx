@@ -7,10 +7,15 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { err } = useContext(RenderContext);
+  const { fireStoreItens } = useContext(RenderContext);
 
   return (
     <div className="App">
-      {err.code ? <PageError err={err} /> : <RoutesApp />}
+      {err.code && fireStoreItens == 0 ? (
+        <PageError err={err} />
+      ) : (
+        <RoutesApp />
+      )}
       <ToastContainer
         position="top-right"
         autoClose={5000}
