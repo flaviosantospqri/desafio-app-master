@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { ContainerHeardeSection, StyleHeader } from "./style";
+import { signOut, getAuth } from "firebase/auth";
 function Header() {
+  const user = getAuth();
   return (
     <ContainerHeardeSection>
       <StyleHeader>
@@ -16,11 +18,13 @@ function Header() {
           <Link to={"/about"} className="btn btn-about">
             About-us
           </Link>
-          <Link to={"/login"} className="btn btn-about">
-            Login
-          </Link>
-          <Link to={"/register"} className="btn btn-about">
-            Register
+          <Link
+            onClick={() => {
+              signOut(user.signOut());
+            }}
+            className="btn btn-register"
+          >
+            {user.currentUser ? "Sign-out" : "Sign-in"}
           </Link>
         </div>
       </StyleHeader>

@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-function Heart({ setLiked, like }) {
+function Heart({ setLiked, like, itemId }) {
   const auth = getAuth();
-  console.log(auth.currentUser);
+
   const navigate = useNavigate();
   function verifyAccess() {
     if (auth.currentUser) {
@@ -14,6 +14,7 @@ function Heart({ setLiked, like }) {
       navigate("/login");
     }
   }
+
   return (
     <button
       onClick={() => verifyAccess()}

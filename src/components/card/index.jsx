@@ -10,6 +10,7 @@ function Card({ games }) {
             key={id}
             thumbnail={thumbnail}
             title={title}
+            id={id}
             genre={genre}
             release_date={release_date}
           ></ItemCard>

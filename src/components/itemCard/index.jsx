@@ -31,7 +31,7 @@ function ItemCard({ thumbnail, title, genre, id, release_date }) {
           ))}
         </div>
         <div className="container_like">
-          <Heart like={like} setLiked={() => setLiked(!like)} />
+          <Heart like={like} itemId={id} setLiked={() => setLiked(!like)} />
         </div>
       </section>
     </li>

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function Star({ isRat, setRating }) {
   const auth = getAuth();
-  console.log(auth.currentUser);
+
   const navigate = useNavigate();
   function verifyAccess() {
     if (auth.currentUser) {
