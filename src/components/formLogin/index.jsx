@@ -26,11 +26,9 @@ function FormRegister() {
   async function onSubmit(e) {
     e.preventDefault();
     try {
-      const userCredential = await app.signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const userCredential = await app
+        .auth()
+        .signInWithEmailAndPassword(email, password);
       if (userCredential.user) {
         navigate("/");
         toast.success("Login was successful");
