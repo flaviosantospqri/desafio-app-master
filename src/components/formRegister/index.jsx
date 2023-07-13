@@ -28,23 +28,26 @@ function FormRegister() {
   async function onSubmit(e) {
     e.preventDefault();
     try {
-      const userCredential = await app.createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      currentUser = auth.currentUser;
-      currentUser.updateProfile(currentUser, {
+      const userCredential = await app
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+
+      console.log(userCredential);
+
+      const currentUser = auth.currentUser;
+      currentUser.updateProfile({
         displayName: name,
       });
+
       const user = userCredential.user;
       const dataInfo = { ...dataUser };
       delete dataInfo.password;
-      dataInfo.timesTamp = serverTimestamp();
-      await db.collection("users" + user.uid).set(dataInfo);
+      dataInfo.timesTamp = Date.now();
+      await db.collection("users").doc(user.id).set(dataInfo);
       toast.success("Register was successful");
       navigate("/");
     } catch (error) {
+      console.log(error);
       toast.error("Error on registration certify your informations is correct");
     }
   }
