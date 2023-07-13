@@ -1,23 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Container } from "../formLogin/style";
-import { useState } from "react";
-import { doc, serverTimestamp, setDoc } from "firebase/firestore";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
-import { db } from "../../services/firebase";
+import { useContext, useState } from "react";
+import { app, db } from "../../services/firebase";
 import { toast } from "react-toastify";
+import { FireBaseContext } from "../../contexts/firebase/firebaseContexts";
 
 function FormRegister() {
+  const { auth } = useContext(FireBaseContext);
   const [dataUser, setDataUser] = useState({
     name: "",
     email: "",
     password: "",
+    likeList: [],
   });
 
-  const { name, email, password } = dataUser;
+  const { name, email, password, likeList } = dataUser;
 
   const navigate = useNavigate();
 
@@ -31,22 +28,20 @@ function FormRegister() {
   async function onSubmit(e) {
     e.preventDefault();
     try {
-      const auth = getAuth();
-      const userCredential = await createUserWithEmailAndPassword(
+      const userCredential = await app.createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-
-      updateProfile(auth.currentUser, {
+      currentUser = auth.currentUser;
+      currentUser.updateProfile(currentUser, {
         displayName: name,
       });
       const user = userCredential.user;
       const dataInfo = { ...dataUser };
       delete dataInfo.password;
       dataInfo.timesTamp = serverTimestamp();
-      dataInfo.linkeList = [];
-      await setDoc(doc(db, "users", user.uid), dataInfo);
+      await db.collection("users" + user.uid).set(dataInfo);
       toast.success("Register was successful");
       navigate("/");
     } catch (error) {

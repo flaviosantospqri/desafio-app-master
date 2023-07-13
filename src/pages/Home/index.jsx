@@ -6,10 +6,12 @@ import Header from "../../components/header";
 import Card from "../../components/card";
 import Load from "../../components/load";
 import SearchFilter from "../../components/searchFilter";
+import { FireBaseContext } from "../../contexts/firebase/firebaseContexts";
 
 function Home() {
-  const { removeLoad, fireStoreItens } = useContext(RenderContext);
+  const { removeLoad } = useContext(RenderContext);
   const { value, optionGenre } = useContext(SearchContext);
+  const { fireStoreItens } = useContext(FireBaseContext);
 
   const filterBySelect = fireStoreItens.filter((a) =>
     a.title.toUpperCase().includes(value.toUpperCase())

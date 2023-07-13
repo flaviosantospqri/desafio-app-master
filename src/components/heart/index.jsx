@@ -1,18 +1,28 @@
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getAuth } from "firebase/auth";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { app, db } from "../../services/firebase";
+import { FireBaseContext } from "../../contexts/firebase/firebaseContexts";
 
 function Heart({ setLiked, like, itemId }) {
-  const auth = getAuth();
+  const { user } = useContext(FireBaseContext);
+  const auth = app.auth();
 
   const navigate = useNavigate();
-  function verifyAccess() {
+  async function verifyAccess() {
     if (auth.currentUser) {
       setLiked();
+      user.likeList.push(itemId);
+      updateList();
     } else {
       navigate("/login");
     }
+  }
+
+  async function updateList() {
+    const users = db.collection("users");
+    await users.doc(user.id).update({ likeList: user.likeList });
   }
 
   return (

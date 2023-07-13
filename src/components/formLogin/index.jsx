@@ -1,11 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Container } from "../formLogin/style";
-import { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useContext, useState } from "react";
 import { toast } from "react-toastify";
-import { db } from "../../services/firebase";
+import { app, db } from "../../services/firebase";
+import { FireBaseContext } from "../../contexts/firebase/firebaseContexts";
 
 function FormRegister() {
+  const { auth } = useContext(FireBaseContext);
   const [dataUser, setDataUser] = useState({
     email: "",
     password: "",
@@ -25,8 +26,7 @@ function FormRegister() {
   async function onSubmit(e) {
     e.preventDefault();
     try {
-      const auth = getAuth();
-      const userCredential = await signInWithEmailAndPassword(
+      const userCredential = await app.signInWithEmailAndPassword(
         auth,
         email,
         password

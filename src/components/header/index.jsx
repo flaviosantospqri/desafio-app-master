@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { ContainerHeardeSection, StyleHeader } from "./style";
-import { signOut, getAuth } from "firebase/auth";
+import { app } from "../../services/firebase";
 function Header() {
-  const user = getAuth();
+  const user = app.auth();
   return (
     <ContainerHeardeSection>
       <StyleHeader>
@@ -20,7 +20,7 @@ function Header() {
           </Link>
           <Link
             onClick={() => {
-              signOut(user.signOut());
+              signOut(user.signOut);
             }}
             className="btn btn-register"
           >

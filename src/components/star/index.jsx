@@ -1,10 +1,10 @@
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { app } from "../../services/firebase";
 
 function Star({ isRat, setRating }) {
-  const auth = getAuth();
+  const auth = app.auth();
 
   const navigate = useNavigate();
   function verifyAccess() {
