@@ -4,7 +4,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { app } from "../../services/firebase";
 
-function FormRegister({ viewName, changeComponent }) {
+function FormLogin({ viewName, changeComponent }) {
   const [dataUser, setDataUser] = useState({
     email: "",
     password: "",
@@ -58,6 +58,7 @@ function FormRegister({ viewName, changeComponent }) {
                 id="email"
                 name="email"
                 placeholder="Email"
+                autocomplete="on"
               />
             </div>
             <div className="field-group">
@@ -72,6 +73,7 @@ function FormRegister({ viewName, changeComponent }) {
                 id="password"
                 name="password"
                 placeholder="*********"
+                autocomplete="on"
               />
             </div>
             <div className="field-group">
@@ -84,4 +86,4 @@ function FormRegister({ viewName, changeComponent }) {
     </Container>
   );
 }
-export default FormRegister;
+export default FormLogin;
