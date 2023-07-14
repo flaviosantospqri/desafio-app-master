@@ -19,7 +19,25 @@ const StyleHeader = styled.div`
     margin-right: 5%;
     width: 25%;
   }
+  .link_favorites {
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+  .text_favorite {
+    font-size: 13px;
+    margin-left: 3%;
+  }
 
+  a:link {
+    text-decoration: none;
+    font-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .btn {
     font-size: 1rem;
     width: 80%;

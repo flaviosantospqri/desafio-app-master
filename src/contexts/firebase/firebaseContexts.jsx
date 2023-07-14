@@ -45,6 +45,7 @@ const FireBaseProvider = ({ children }) => {
       }));
 
       const atualUser = userData.find((a) => auth.currentUser.email == a.email);
+      console.log(atualUser);
       setUser(atualUser);
     }
 
