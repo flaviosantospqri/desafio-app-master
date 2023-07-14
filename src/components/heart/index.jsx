@@ -16,7 +16,7 @@ function Heart({ setLiked, like, itemId }) {
       user.likeList.push(itemId);
       updateList();
     } else {
-      navigate("/login");
+      navigate("/auth");
     }
   }
 

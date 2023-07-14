@@ -11,8 +11,7 @@ function RoutesApp() {
       <Routes>
         <Route path="/" exact Component={Home}></Route>
         <Route path="/about" Component={About}></Route>
-        <Route path="/login" Component={Login}></Route>
-        <Route path="/register" Component={Register}></Route>
+        <Route path="/auth" Component={Login}></Route>
         <Route path="/*" Component={Home}></Route>
       </Routes>
     </BrowserRouter>

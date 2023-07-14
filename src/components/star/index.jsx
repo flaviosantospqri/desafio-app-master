@@ -1,7 +1,7 @@
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import { app } from "../../services/firebase";
+import { app, db } from "../../services/firebase";
 import { useContext } from "react";
 import { FireBaseContext } from "../../contexts/firebase/firebaseContexts";
 
@@ -18,7 +18,7 @@ function Star({ isRat, setRating, indexRating, itemId }) {
       setRating();
       updateList();
     } else {
-      navigate("/login");
+      navigate("/auth");
     }
   }
 

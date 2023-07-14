@@ -1,12 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Container } from "../formLogin/style";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
-import { app, db } from "../../services/firebase";
-import { FireBaseContext } from "../../contexts/firebase/firebaseContexts";
+import { app } from "../../services/firebase";
 
-function FormRegister() {
-  const { auth } = useContext(FireBaseContext);
+function FormRegister({ viewName, changeComponent }) {
   const [dataUser, setDataUser] = useState({
     email: "",
     password: "",
@@ -23,6 +21,9 @@ function FormRegister() {
     }));
   }
 
+  function changeComponentHere() {
+    changeComponent();
+  }
   async function onSubmit(e) {
     e.preventDefault();
     try {
@@ -72,14 +73,12 @@ function FormRegister() {
                 name="password"
                 placeholder="*********"
               />
-              <Link to="/register" className="Enter">
-                Enter
-              </Link>
             </div>
             <div className="field-group">
               <input className="btn-submit" type="submit" value="Log In" />
             </div>
           </form>
+          <button onClick={() => changeComponentHere()}>{viewName}</button>
         </div>
       </div>
     </Container>

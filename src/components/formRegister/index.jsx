@@ -5,7 +5,7 @@ import { app, db } from "../../services/firebase";
 import { toast } from "react-toastify";
 import { FireBaseContext } from "../../contexts/firebase/firebaseContexts";
 
-function FormRegister() {
+function FormRegister({ viewName, changeComponent }) {
   const { auth } = useContext(FireBaseContext);
   const [dataUser, setDataUser] = useState({
     name: "",
@@ -23,6 +23,10 @@ function FormRegister() {
       ...prev,
       [e.target.id]: e.target.value,
     }));
+  }
+
+  function changeComponentHere() {
+    changeComponent();
   }
 
   async function onSubmit(e) {
@@ -98,14 +102,12 @@ function FormRegister() {
                 name="password"
                 placeholder="*********"
               />
-              <Link to="/login" className="link-forgot">
-                Enter
-              </Link>
             </div>
             <div className="field-group">
               <input className="btn-submit" type="submit" value="Log In" />
             </div>
           </form>
+          <button onClick={() => changeComponentHere()}>{viewName}</button>
         </div>
       </div>
     </Container>
