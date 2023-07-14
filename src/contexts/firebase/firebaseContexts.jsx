@@ -6,53 +6,52 @@ const FireBaseContext = createContext({});
 
 const FireBaseProvider = ({ children }) => {
   const { data } = useContext(RenderContext);
+
   const auth = app.auth();
   const [user, setUser] = useState({});
   const [fireStoreItens, setFireStoreItens] = useState([]);
 
-  async function fetchGamesFromFire() {
-    const snapshot = await db.collection("games").get();
-    const gamesData = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    setFireStoreItens(gamesData);
-  }
+  console.log(fireStoreItens.length);
 
-  async function fetchUserFromFire() {
-    const snapshot = await db.collection("users").get();
-    const userData = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    const atualUser = userData.find((a) => auth.currentUser.uid == a.id);
-    setUser(atualUser);
-  }
-
-  async function setBdItems() {
-    const snapshot = await db.collection("games").get();
-    if (snapshot.empty && data.length > 0)
+  useEffect(() => {
+    async function setBdItems() {
       try {
-        data?.map((a) => {
-          a.ratingList = [];
-          db.collection("games").set(a);
-        });
-        console.log("Document written");
+        const snapshot = await db.collection("games").get();
+        if (snapshot.empty) {
+          data.map((a) => {
+            a.ratingList = [];
+            db.collection("games").doc(`${a.title}`).set(a);
+          });
+        }
       } catch (e) {
         console.error("Error adding document: ", e);
       }
-  }
+    }
 
-  useEffect(() => {
+    async function fetchGamesFromFire() {
+      const snapshot = await db.collection("games").orderBy("ratingList").get();
+      const gamesData = snapshot.docs.map((doc) => ({
+        uid: doc.id,
+        ...doc.data(),
+      }));
+      setFireStoreItens(gamesData);
+    }
+
+    async function fetchUserFromFire() {
+      const snapshot = await db.collection("users").get();
+      const userData = snapshot.docs.map((doc) => ({
+        uid: doc.id,
+        ...doc.data(),
+      }));
+
+      const atualUser = userData.find((a) => auth.currentUser.email == a.email);
+      setUser(atualUser);
+    }
+
+    setBdItems();
     fetchGamesFromFire();
     fetchUserFromFire();
-    const clear = setTimeout(() => {
-      setBdItems();
-    }, 5000);
-    return () => {
-      clearTimeout(clear);
-    };
-  }, []);
+  }, [data, auth]);
 
   return (
     <FireBaseContext.Provider

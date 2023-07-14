@@ -9,7 +9,7 @@ import SearchFilter from "../../components/searchFilter";
 import { FireBaseContext } from "../../contexts/firebase/firebaseContexts";
 
 function Home() {
-  const { removeLoad } = useContext(RenderContext);
+  const { removeLoad, data } = useContext(RenderContext);
   const { value, optionGenre } = useContext(SearchContext);
   const { fireStoreItens } = useContext(FireBaseContext);
 
@@ -30,8 +30,10 @@ function Home() {
           <Card games={filterByOption} />
         ) : filterBySelect?.length > 0 ? (
           <Card games={filterBySelect} />
-        ) : (
+        ) : fireStoreItens.length > 0 ? (
           <Card games={fireStoreItens} />
+        ) : (
+          <Card games={data} />
         )}
         {!removeLoad && <Load />}
       </ContainerAplication>

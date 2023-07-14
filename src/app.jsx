@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      {err.code && fireStoreItens == 0 ? (
+      {err?.code || fireStoreItens == 0 ? (
         <PageError err={err} />
       ) : (
         <RoutesApp />

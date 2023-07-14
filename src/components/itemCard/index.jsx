@@ -26,7 +26,9 @@ function ItemCard({ thumbnail, title, genre, id, release_date }) {
             <Star
               key={`${index}_star`}
               isRat={index <= rating}
+              indexRating={index}
               setRating={() => setRating(index)}
+              itemId={id}
             />
           ))}
         </div>

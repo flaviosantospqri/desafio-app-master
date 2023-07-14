@@ -2,7 +2,20 @@ import { Link } from "react-router-dom";
 import { ContainerHeardeSection, StyleHeader } from "./style";
 import { useContext } from "react";
 import { FireBaseContext } from "../../contexts/firebase/firebaseContexts";
+import { app } from "../../services/firebase";
+import { toast } from "react-toastify";
 function Header() {
+  function signOut() {
+    app
+      .auth()
+      .signOut()
+      .then(function () {
+        toast.info("You out");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
   const { auth } = useContext(FireBaseContext);
   return (
     <ContainerHeardeSection>
@@ -21,7 +34,7 @@ function Header() {
           </Link>
           <Link
             onClick={() => {
-              signOut(auth.currentUser.signOut());
+              signOut();
             }}
             className="btn btn-register"
           >

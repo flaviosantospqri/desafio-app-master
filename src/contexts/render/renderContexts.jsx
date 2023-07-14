@@ -1,12 +1,12 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { connect } from "../../services/api";
+import { FireBaseContext } from "../firebase/firebaseContexts";
 
 const RenderContext = createContext({});
 const RenderProvider = ({ children }) => {
   const [data, setDatas] = useState([]);
   const [err, setErr] = useState([]);
   const [removeLoad, setRemoveLoader] = useState(false);
-
   const getConnection = async () => {
     await connect
       .get("/data")

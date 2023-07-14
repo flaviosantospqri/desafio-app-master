@@ -7,11 +7,11 @@ import { FireBaseContext } from "../../contexts/firebase/firebaseContexts";
 
 function Heart({ setLiked, like, itemId }) {
   const { user } = useContext(FireBaseContext);
-  const auth = app.auth();
-
+  const auth = app.auth().currentUser;
   const navigate = useNavigate();
+
   async function verifyAccess() {
-    if (auth.currentUser) {
+    if (auth) {
       setLiked();
       user.likeList.push(itemId);
       updateList();
@@ -22,7 +22,7 @@ function Heart({ setLiked, like, itemId }) {
 
   async function updateList() {
     const users = db.collection("users");
-    await users.doc(user.id).update({ likeList: user.likeList });
+    await users.doc(user.uid).update({ likeList: user.likeList });
   }
 
   return (

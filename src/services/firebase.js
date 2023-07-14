@@ -3,13 +3,12 @@
 import firebase from "firebase";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBx0yn1RrLCnXbdrAp0JkaOsdX2WrJftnE",
-  authDomain: "games-gallery-app.firebaseapp.com",
-  projectId: "games-gallery-app",
-  storageBucket: "games-gallery-app.appspot.com",
-  messagingSenderId: "609401309657",
-  appId: "1:609401309657:web:c389e64ec728ee340ef1c8",
-  measurementId: "G-RTDTLF3TXL",
+  apiKey: "AIzaSyAoBJWAuhAwnJbp9JohRk0BiMAG3nGUvQ4",
+  authDomain: "games-34454.firebaseapp.com",
+  projectId: "games-34454",
+  storageBucket: "games-34454.appspot.com",
+  messagingSenderId: "935973374886",
+  appId: "1:935973374886:web:812fc3faa91f8a2c609d67",
 };
 
 const app = firebase.initializeApp(firebaseConfig);

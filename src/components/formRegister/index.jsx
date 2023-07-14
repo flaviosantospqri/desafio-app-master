@@ -32,8 +32,6 @@ function FormRegister() {
         .auth()
         .createUserWithEmailAndPassword(email, password);
 
-      console.log(userCredential);
-
       const currentUser = auth.currentUser;
       currentUser.updateProfile({
         displayName: name,
@@ -47,8 +45,9 @@ function FormRegister() {
       toast.success("Register was successful");
       navigate("/");
     } catch (error) {
-      console.log(error);
-      toast.error("Error on registration certify your informations is correct");
+      toast.error(
+        "Error on registration certify your informations is correct" + error
+      );
     }
   }
   return (
