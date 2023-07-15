@@ -5,6 +5,7 @@ import Card from "../card";
 import { Link } from "react-router-dom";
 import SearchFilter from "../searchFilter";
 import { SearchContext } from "../../contexts/search/searchContext";
+import ContainerFavorites from "./style";
 
 function Favorites() {
   const { user } = useContext(FireBaseContext);
@@ -28,9 +29,14 @@ function Favorites() {
     }
   }
   return (
-    <>
-      <Link to={"/"}>Back</Link>
+    <ContainerFavorites>
+      <span>
+        {" "}
+        <Link to={"/"}>Back</Link>
+      </span>
       <SearchFilter />
+
+      <h2>Your Favorites</h2>
       {filterByOption?.length > 0 ? (
         <Card games={filterByOption} />
       ) : filterBySelect?.length > 0 ? (
@@ -38,7 +44,7 @@ function Favorites() {
       ) : (
         listLikeObject.length > 0 && <Card games={listLikeObject} />
       )}
-    </>
+    </ContainerFavorites>
   );
 }
 

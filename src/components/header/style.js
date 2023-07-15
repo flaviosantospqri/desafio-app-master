@@ -61,12 +61,14 @@ const StyleHeader = styled.div`
   }
   button {
     background-color: transparent;
-    border: 1px solid var(--color-grey50);
+    border: none;
     font-size: 0.8rem;
     min-width: 80px;
     margin-left: 1%;
     border-radius: 8px;
     padding: 3px;
+    font-size: 13px;
+    margin-left: 3%;
     cursor: pointer;
   }
   button:hover {

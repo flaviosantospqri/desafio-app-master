@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import { ContainerHeardeSection, StyleHeader } from "./style";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FireBaseContext } from "../../contexts/firebase/firebaseContexts";
 import { app } from "../../services/firebase";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
+import { RenderContext } from "../../contexts/render/renderContexts";
 function Header() {
+  const { order, setOrder } = useContext(RenderContext);
+  function changeOrder() {
+    setOrder(!order);
+  }
   function signOut() {
     app
       .auth()
@@ -28,20 +33,14 @@ function Header() {
           </h3>
         </div>
         <div className="btn-sector">
-          <Link to={"/"} className=" btn btn-home">
-            Home
-          </Link>
-          <Link to={"/about"} className="btn btn-about">
-            About-us
-          </Link>
           <Link to={"/favorites"}>
-            {user.likeList ? (
+            {user.likeList?.length > 0 ? (
               <span className="link_favorites">
                 <FontAwesomeIcon icon={faHeart} />{" "}
                 <span className="text_favorite">favorites</span>
               </span>
             ) : (
-              <span>
+              <span className="link_favorites">
                 <FontAwesomeIcon
                   className="link_favorites"
                   icon={faHeart}
@@ -51,6 +50,20 @@ function Header() {
               </span>
             )}
           </Link>
+          <button className="button_orderByBest" onClick={() => changeOrder()}>
+            {order ? (
+              <span>
+                <FontAwesomeIcon icon={faStar} style={{ color: "#FFA500" }} />
+                Best
+              </span>
+            ) : (
+              <span>
+                {" "}
+                <FontAwesomeIcon icon={faStar} style={{ color: "#b0b7c4" }} />
+                Worst
+              </span>
+            )}
+          </button>
         </div>
       </StyleHeader>
     </ContainerHeardeSection>

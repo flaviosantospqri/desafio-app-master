@@ -4,6 +4,7 @@ import { FireBaseContext } from "../firebase/firebaseContexts";
 
 const RenderContext = createContext({});
 const RenderProvider = ({ children }) => {
+  const [order, setOrder] = useState(true);
   const [data, setDatas] = useState([]);
   const [err, setErr] = useState([]);
   const [removeLoad, setRemoveLoader] = useState(false);
@@ -30,6 +31,8 @@ const RenderProvider = ({ children }) => {
         data,
         err,
         removeLoad,
+        order,
+        setOrder,
       }}
     >
       {children}

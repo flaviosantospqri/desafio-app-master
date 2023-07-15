@@ -19,7 +19,7 @@ const FireBaseProvider = ({ children }) => {
         const snapshot = await db.collection("games").get();
         if (snapshot.empty) {
           data.map((a) => {
-            a.ratingList = [];
+            a.ratingList = [0];
             db.collection("games").doc(`${a.title}`).set(a);
           });
         }
@@ -45,7 +45,6 @@ const FireBaseProvider = ({ children }) => {
       }));
 
       const atualUser = userData.find((a) => auth.currentUser.email == a.email);
-      console.log(atualUser);
       setUser(atualUser);
     }
 

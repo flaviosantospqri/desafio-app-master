@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { RenderContext } from "../../contexts/render/renderContexts";
 import { SearchContext } from "../../contexts/search/searchContext";
 import { ContainerAplication } from "../../style";
@@ -9,32 +9,46 @@ import SearchFilter from "../../components/searchFilter";
 import { FireBaseContext } from "../../contexts/firebase/firebaseContexts";
 
 function Home() {
-  const { removeLoad, data } = useContext(RenderContext);
+  const { removeLoad, data, order } = useContext(RenderContext);
   const { value, optionGenre } = useContext(SearchContext);
   const { fireStoreItens } = useContext(FireBaseContext);
 
-  const filterBySelect = fireStoreItens.filter((a) =>
+  let render = [];
+  const itensSum = fireStoreItens.map((a) => {
+    a.sum = a.ratingList.reduce((acc, value) => acc + value);
+    return a;
+  });
+
+  function orderSum(a, b) {
+    return order ? b.sum - a.sum : a.sum - b.sum;
+  }
+  const orderedItens = itensSum?.sort(orderSum);
+
+  const filterBySelect = orderedItens.filter((a) =>
     a.title.toUpperCase().includes(value.toUpperCase())
   );
 
-  const filterByOption = fireStoreItens.filter(
+  const filterByOption = orderedItens.filter(
     (a) => optionGenre.toUpperCase() == a.genre.toUpperCase()
   );
+
+  if (filterByOption.length > 0) {
+    render = filterByOption;
+  } else {
+    render = filterBySelect;
+  }
 
   return (
     <>
       <ContainerAplication>
         <Header />
         <SearchFilter />
-        {filterByOption?.length > 0 ? (
-          <Card games={filterByOption} />
-        ) : filterBySelect?.length > 0 ? (
-          <Card games={filterBySelect} />
-        ) : fireStoreItens.length > 0 ? (
-          <Card games={fireStoreItens} />
+        {render.length > 0 ? (
+          <Card games={render} />
         ) : (
-          <Card games={data} />
+          <Card games={orderedItens} />
         )}
+
         {!removeLoad && <Load />}
       </ContainerAplication>
     </>
